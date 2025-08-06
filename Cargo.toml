@@ -153,7 +153,7 @@ manganis-macro = { path = "packages/manganis/manganis-macro", version = "0.6.2" 
 warnings = { version = "0.2.1" }
 
 # a fork of pretty please for tests - let's get off of this if we can!
-prettier-please = { version = "0.3.0", features = ["verbatim"]}
+prettier-please = { version = "0.3.0", features = ["verbatim"] }
 anyhow = "1.0.95"
 clap = { version = "4.5.7" }
 askama_escape = "0.10.3"
@@ -188,8 +188,20 @@ http = "1.0.0"
 notify = { version = "6.1.1" }
 tower-http = "0.5.2"
 hyper = "1.0.0"
-hyper-rustls = { version= "0.27.2", default-features = false , features=["native-tokio","http1","http2","tls12","logging","ring"]}
-rustls = { version="0.23.12", default-features=false, features =["logging","std","tls12","ring"] }
+hyper-rustls = { version = "0.27.2", default-features = false, features = [
+    "native-tokio",
+    "http1",
+    "http2",
+    "tls12",
+    "logging",
+    "ring",
+] }
+rustls = { version = "0.23.12", default-features = false, features = [
+    "logging",
+    "std",
+    "tls12",
+    "ring",
+] }
 serde_json = "1.0.61"
 serde = "1.0.61"
 syn = "2.0"
@@ -316,7 +328,7 @@ tokio = { version = "1.40", default-features = false, features = [
     "macros",
     "io-util",
     "rt",
-    "time"
+    "time",
 ] }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
@@ -335,6 +347,7 @@ liveview = ["dioxus/liveview"]
 fullstack = ["dioxus/fullstack"]
 server = ["dioxus/server"]
 mobile = ["dioxus/mobile"]
+patch_asset_path = ["dioxus/patch_asset_path"]
 web = ["dioxus/web"]
 http = ["dep:reqwest", "dep:http-range"]
 gpu = ["dep:ouroboros", "dep:wgpu"]

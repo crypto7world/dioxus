@@ -229,7 +229,7 @@ fn get_asset_root() -> PathBuf {
     }
 
     // HACK THIS FOR HeritageGui
-    #[cfg(target_os = "linux")]
+    #[cfg(all(target_os = "linux", feature = "patch_asset_path"))]
     {
         return cur_exe
             .parent()

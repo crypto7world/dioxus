@@ -18,7 +18,10 @@ dioxus-html = { workspace = true, features = [
 ] }
 dioxus-document = { workspace = true }
 dioxus-signals = { workspace = true, optional = true }
-dioxus-interpreter-js = { workspace = true, features = ["binary-protocol", "serialize"] }
+dioxus-interpreter-js = { workspace = true, features = [
+    "binary-protocol",
+    "serialize",
+] }
 dioxus-cli-config = { workspace = true }
 generational-box = { workspace = true }
 # hotreload only works on desktop platforms.... mobile is still wip
@@ -66,12 +69,15 @@ wry = { workspace = true, features = [
     "os-webview",
     "protocol",
     "drag-drop",
-    "linux-body"
+    "linux-body",
 ] }
 
 [target.'cfg(any(target_os = "windows",target_os = "macos",target_os = "linux",target_os = "dragonfly", target_os = "freebsd", target_os = "netbsd", target_os = "openbsd"))'.dependencies]
 global-hotkey = "0.5.0"
-rfd = { version = "0.14", default-features = false, features = ["xdg-portal", "tokio"] }
+rfd = { version = "0.14", default-features = false, features = [
+    "xdg-portal",
+    "tokio",
+] }
 muda = "0.11.3"
 
 [target.'cfg(any(target_os = "windows",target_os = "macos",target_os = "linux"))'.dependencies]
@@ -83,7 +89,7 @@ objc_id = "0.1.1"
 
 # use rustls on android
 [target.'cfg(target_os = "android")'.dependencies]
-tokio-tungstenite = { workspace = true, optional = true, features = ["rustls"]}
+tokio-tungstenite = { workspace = true, optional = true, features = ["rustls"] }
 jni = "0.21.1"
 ndk = { version = "0.9.0" }
 ndk-sys = { version = "0.6.0" }
@@ -91,7 +97,9 @@ ndk-context = { version = "0.1.1" }
 
 # use native tls on other platforms
 [target.'cfg(not(target_os = "android"))'.dependencies]
-tokio-tungstenite = { workspace = true, optional = true, features = ["native-tls"]}
+tokio-tungstenite = { workspace = true, optional = true, features = [
+    "native-tls",
+] }
 
 [target.'cfg(target_os = "macos")'.dependencies]
 cocoa = "0.25"
@@ -109,6 +117,7 @@ devtools = ["wry/devtools", "dep:dioxus-devtools", "dioxus-signals"]
 exception = ["wry/objc-exception"]
 transparent = ["wry/transparent"]
 gnu = []
+patch_asset_path = []
 
 [package.metadata.docs.rs]
 features = ["tokio_runtime", "devtools"]
@@ -122,8 +131,8 @@ targets = [
     "aarch64-linux-android",
     "armv7-linux-androideabi",
 ]
-rustc-args = [ "--cfg", "docsrs" ]
-rustdoc-args = [ "--cfg", "docsrs" ]
+rustc-args = ["--cfg", "docsrs"]
+rustdoc-args = ["--cfg", "docsrs"]
 
 [dev-dependencies]
 dioxus = { workspace = true, features = ["desktop"] }
