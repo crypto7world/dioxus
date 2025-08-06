@@ -228,6 +228,17 @@ fn get_asset_root() -> PathBuf {
             .join("Resources");
     }
 
+    // HACK THIS FOR HeritageGui
+    #[cfg(target_os = "linux")]
+    {
+        return cur_exe
+            .parent()
+            .unwrap()
+            .parent()
+            .unwrap()
+            .join("lib/HeritageGui");
+    }
+
     // For all others, the structure looks like this:
     // app.(exe/appimage)
     //   main.exe
