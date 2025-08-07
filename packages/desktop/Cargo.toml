@@ -10,6 +10,8 @@ homepage = "https://dioxuslabs.com/learn/0.6/getting_started"
 keywords = ["dom", "ui", "gui", "react"]
 
 [dependencies]
+convert_case = { workspace = true }
+
 dioxus-core = { workspace = true, features = ["serialize"] }
 dioxus-html = { workspace = true, features = [
     "serialize",

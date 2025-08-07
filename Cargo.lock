@@ -3690,6 +3690,7 @@ dependencies = [
  "async-trait",
  "base64 0.22.1",
  "cocoa 0.25.0",
+ "convert_case 0.6.0",
  "core-foundation 0.9.4",
  "dioxus",
  "dioxus-cli-config",

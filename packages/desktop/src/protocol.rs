@@ -236,7 +236,13 @@ fn get_asset_root() -> PathBuf {
         // lib/
         //   $product_name/
         //     assets/
-        if let Some(product_name) = dioxus_cli_config::product_name() {
+
+        use convert_case::{Case, Casing};
+        if let Some(product_name) = cur_exe
+            .file_name()
+            .and_then(|n| n.to_str())
+            .map(|n| n.to_case(Case::Pascal))
+        {
             let lib_asset_path = || {
                 let path = cur_exe.parent()?.parent()?.join("lib").join(product_name);
                 path.exists().then_some(path)
