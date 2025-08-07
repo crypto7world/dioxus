@@ -228,15 +228,23 @@ fn get_asset_root() -> PathBuf {
             .join("Resources");
     }
 
-    // HACK THIS FOR HeritageGui
-    #[cfg(all(target_os = "linux", feature = "patch_asset_path"))]
+    #[cfg(target_os = "linux")]
     {
-        return cur_exe
-            .parent()
-            .unwrap()
-            .parent()
-            .unwrap()
-            .join("lib/HeritageGui");
+        // In linux bundles, the assets are placed in the lib/$product_name directory
+        // bin/
+        //   main
+        // lib/
+        //   $product_name/
+        //     assets/
+        if let Some(product_name) = dioxus_cli_config::product_name() {
+            let lib_asset_path = || {
+                let path = cur_exe.parent()?.parent()?.join("lib").join(product_name);
+                path.exists().then_some(path)
+            };
+            if let Some(asset_dir) = lib_asset_path() {
+                return asset_dir;
+            }
+        }
     }
 
     // For all others, the structure looks like this:

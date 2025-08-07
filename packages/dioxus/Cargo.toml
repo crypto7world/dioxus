@@ -104,7 +104,6 @@ server = [
     "ssr",
     "dioxus-liveview?/axum",
 ]
-patch_asset_path = ["dioxus-desktop?/patch_asset_path"]
 # This feature just disables the no-renderer-enabled warning
 third-party-renderer = []
 
